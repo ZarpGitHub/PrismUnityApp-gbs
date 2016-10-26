@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="PrismUnityApp2.Views.Bema">
+
+  <ContentPage.Content>
+
+    <!--<Grid>
+      <Grid.RowDefinitions>
+        
+      </Grid.RowDefinitions>
+    </Grid>-->
+      
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="30"/>
+          <RowDefinition Height="50"/>
+          <RowDefinition Height="*" />
+          <RowDefinition Height="50" />
+        </Grid.RowDefinitions> 
+      
+
+    <Label Text="Bemærkninger" FontSize="24" HorizontalOptions="Center" Grid.Row="1"/>
+        <ScrollView Orientation="Vertical" Grid.Row="2">
+          <ListView x:Name="MyClassList"
+                              ItemsSource="{Binding MyClassList}"
+                              HasUnevenRows="True">
+            <!--<ListView.ItemsPanel>
+              <ItemsPanelTemplate>
+                <StackPanel Orientation="Vertical"></StackPanel>
+              </ItemsPanelTemplate>
+            </ListView.ItemsPanel>-->
+            <ListView.ItemTemplate>
+              <DataTemplate>
+                <ViewCell>
+                  <Grid Padding="5">
+                    <Grid.RowDefinitions>
+                      <RowDefinition Height="20"></RowDefinition>
+                      <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                      <ColumnDefinition Width="10"></ColumnDefinition>
+                      <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Text="*"/>
+                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding MessageDate}"/>
+                    <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding MessageData}" FontSize="24" LineBreakMode="WordWrap"/>
+                      
+
+                  </Grid>
+                </ViewCell>
+              </DataTemplate>
+            </ListView.ItemTemplate>
+          </ListView>
+        </ScrollView>
+    <Button Text="OK" FontSize="24" HorizontalOptions="Center" Grid.Row="3" Command="{Binding Navigatetest}"/>
+
+
+
+      </Grid>
+            
+  </ContentPage.Content>
+  
+</ContentPage>

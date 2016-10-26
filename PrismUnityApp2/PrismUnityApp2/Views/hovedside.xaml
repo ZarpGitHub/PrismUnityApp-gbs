@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="PrismUnityApp2.Views.Hovedside"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+  <ContentPage.Content>
+
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="20" />
+        <RowDefinition Height="50"/>
+        <RowDefinition Height="*" />
+        <RowDefinition Height="50" />
+        <RowDefinition Height="50" />
+      </Grid.RowDefinitions>
+
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+
+      <DatePicker Date="{Binding SelectedDate,Mode=TwoWay}" MinimumDate="{Binding MinimumSelectedDate,Mode=TwoWay}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="Center">
+        <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
+      </DatePicker>
+
+      <Button Text="Scan" FontSize="24" Grid.Row="3" Grid.Column="0" Command="{Binding Navigatetest}"/>
+      <Button Text="Mail" FontSize="24" Grid.Row="3" Grid.Column="2"/>
+      <Button Text="Manuel" FontSize="24" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="Center"/>
+      
+    </Grid>
+    
+    
+  </ContentPage.Content>
+
+</ContentPage>
