@@ -51,7 +51,7 @@ namespace PrismUnityApp2.ViewModels
             var ttt=position.Latitude;
 
 
-
+            // Gif køres her 
 
             await _navigationService.NavigateAsync("Bema");
         }
