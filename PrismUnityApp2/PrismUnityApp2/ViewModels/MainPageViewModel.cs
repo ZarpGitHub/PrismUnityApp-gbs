@@ -48,7 +48,7 @@ namespace PrismUnityApp2.ViewModels
             locator.DesiredAccuracy = 50;
 
             var position =  await locator.GetPositionAsync(10000);
-            var ttt=position.Latitude;
+            var ttt=position.Latitude.GetType();
 
 
             // Gif køres her 

@@ -8,9 +8,16 @@ using System.Linq;
 
 namespace PrismUnityApp2.ViewModels
 {
-    public class HovedsideViewModel : BindableBase, INotifyPropertyChanged , INavigationAware
+    public class BestillingViewModel : BindableBase, INavigationAware, INotifyPropertyChanged
     {
-        INavigationService _navigationService;
+
+        private string _title;
+        public string Title
+        {
+            get { return _title; }
+            set { SetProperty(ref _title, value); }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         private DateTime selectedDate;
@@ -51,37 +58,23 @@ namespace PrismUnityApp2.ViewModels
             }
         }
 
-        public DelegateCommand Navigatetest { get; private set; }
-        public DelegateCommand NavigateToBestilling { get; private set; }
 
-        public HovedsideViewModel(INavigationService navigationService)
+        public BestillingViewModel()
         {
             MinimumSelectedDate = DateTime.Now;
             SelectedDate = DateTime.Now.AddDays(1);
-
-            _navigationService = navigationService;
-            Navigatetest = new DelegateCommand(Navigate);
-            NavigateToBestilling = new DelegateCommand(_NavigateToBestilling);
-        }
-
-        private void _NavigateToBestilling()
-        {
-            _navigationService.NavigateAsync("Bestilling");
-        }
-
-        private void Navigate()
-        {
-           _navigationService.NavigateAsync("Scanner");
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
-            
+
         }
 
         public void OnNavigatedTo(NavigationParameters parameters)
         {
-            
+            if (parameters.ContainsKey("title"))
+                Title = (string)parameters["title"] + " and Prism";
         }
+
     }
 }

@@ -20,6 +20,7 @@ namespace PrismUnityApp2
             Container.RegisterTypeForNavigation<Bema>();
             Container.RegisterTypeForNavigation<Hovedside>();
             Container.RegisterTypeForNavigation<Scanner>();
+            Container.RegisterTypeForNavigation<Bestilling>(); 
         }
     }
 }

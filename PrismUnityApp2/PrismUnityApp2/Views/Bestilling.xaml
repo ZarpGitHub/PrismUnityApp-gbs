@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="PrismUnityApp2.Views.Bestilling">
+
+  <ContentPage.Content>
+
+    <Grid BackgroundColor="Green">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="20"></RowDefinition>
+      <!--padding 0-->
+      <RowDefinition Height="40"></RowDefinition>
+      <!--Tomme ID 1-->
+
+      <RowDefinition Height="50"></RowDefinition>
+      <!--Date 2-->
+
+      <RowDefinition Height="75"></RowDefinition>
+      <!--Type flyting 3-->
+
+      <RowDefinition Height="75"></RowDefinition>
+      <!--Fraktion 4-->
+
+      <RowDefinition Height="*"></RowDefinition>
+      <!--Text felt 5-->
+
+      <RowDefinition Height="50"></RowDefinition>
+      <!--Scan button 6-->
+
+      <RowDefinition Height="75"></RowDefinition>
+      <!--Bestil button 7-->
+
+      <!--<RowDefinition Height="75"></RowDefinition> -->
+      <!--Fortryd button 8-->
+    </Grid.RowDefinitions>
+
+
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="*"></ColumnDefinition>
+      <ColumnDefinition Width="*"></ColumnDefinition>
+      <ColumnDefinition Width="*"></ColumnDefinition>
+    </Grid.ColumnDefinitions>
+
+    <Label Text="container NR" FontSize="20" HorizontalOptions="Center" Grid.Row="1" Grid.Column="1" BackgroundColor="Blue"/>
+    <!-- need to be Bindede op to TommeID  Text="{Binding TommeID}" -->
+
+    <DatePicker Grid.Row="2" Grid.Column="1" HorizontalOptions="Center" BackgroundColor="Yellow">
+      <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
+    </DatePicker>
+
+    <Picker Title="Type Flyting" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" BackgroundColor="Red" Margin="10,0,10,0" >
+      <!--Transport skal sættes som starter-->
+      <Picker.Items>
+        <x:String>Transport</x:String>
+        <x:String>Vipning</x:String>
+        <x:String>Flyting</x:String>
+      </Picker.Items>
+    </Picker>
+
+    <Picker Title="Fraktion" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" BackgroundColor="Blue" Margin="10,0,10,0">
+      <Picker.Items>
+        <x:String>Fraktion1</x:String>
+        <x:String>Fraktion2</x:String>
+        <x:String>Fraktion3</x:String>
+        <x:String>Fraktion4</x:String>
+        <x:String>Fraktion5</x:String>
+        <x:String>Fraktion6</x:String>
+      </Picker.Items>
+    </Picker>
+
+    <Editor Text="I am an Editor"  Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" BackgroundColor="Yellow" Margin="10,0,10,0"/>
+
+    <Button Text="Scan" FontSize="20" Grid.Row="6" Grid.Column="1" HorizontalOptions="Center" BackgroundColor="Red"/>
+
+    <Button Text="Bestil" FontSize="20" Grid.Row="7" Grid.Column="0" BackgroundColor="Red" HorizontalOptions="FillAndExpand" Margin="10,0,0,0"/>
+
+    <Button Text="Fortryd" FontSize="20" Grid.Row="7" Grid.Column="2" BackgroundColor="Red" HorizontalOptions="FillAndExpand" Margin="0,0,10,0"/>
+
+  </Grid>
+
+
+
+  </ContentPage.Content>
+  
+</ContentPage>

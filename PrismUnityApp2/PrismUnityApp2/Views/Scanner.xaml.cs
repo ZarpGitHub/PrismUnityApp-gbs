@@ -14,7 +14,7 @@ namespace PrismUnityApp2.Views
 
             try
             {
-                zxing.OnScanResult += (result) =>
+                zxing.OnScanResult += (result) =>  // => means what here ?
                         Device.BeginInvokeOnMainThread(async () =>
                         {
 
@@ -36,9 +36,9 @@ namespace PrismUnityApp2.Views
 
             overlay = new ZXingDefaultOverlay
             {
-                TopText = "Hold your phone up to the barcode",
-                BottomText = "Scanning will happen automatically",
-                ShowFlashButton = zxing.HasTorch,
+                TopText = "Hold your phone up to the barcode",      // this isnt shown
+                BottomText = "Scanning will happen automatically",  //this isnt shown
+                ShowFlashButton = zxing.HasTorch,  // this one is shown  also this doesnt work as we havnt open for flash yet but do we need it ?
             };
             overlay.FlashButtonClicked += (sender, e) => {
                 zxing.IsTorchOn = !zxing.IsTorchOn;
