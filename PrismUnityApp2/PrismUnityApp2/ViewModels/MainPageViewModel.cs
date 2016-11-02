@@ -42,18 +42,33 @@ namespace PrismUnityApp2.ViewModels
 
         }
 
+        private string _latiude;
+        public string latiude
+        {
+            get { return _latiude; }
+            set { SetProperty(ref _latiude, value); }
+        }
+
+        private string _longitude;
+        public string longitude
+        {
+            get { return _longitude; }
+            set { SetProperty(ref _longitude, value); }
+        }
+
         private async void Navigate()
         {
             var locator = CrossGeolocator.Current;
             locator.DesiredAccuracy = 50;
 
             var position =  await locator.GetPositionAsync(10000);
-            var ttt=position.Latitude.GetType();
+             latiude = position.Latitude.ToString();
+             longitude = position.Longitude.ToString();
 
 
             // Gif køres her 
-
-            await _navigationService.NavigateAsync("Bema");
+            string navString = string.Format("Bema?lat={0}&lon={1}", latiude, longitude);
+            await _navigationService.NavigateAsync(navString);
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)

@@ -13,6 +13,7 @@ namespace PrismUnityApp2.ViewModels
     {
         INavigationService _navigationService;
         public event PropertyChangedEventHandler PropertyChanged;
+        MobileService.VaksServiceClient ws = new MobileService.VaksServiceClient();
 
         private ObservableCollection<Message> myClassList;
         public ObservableCollection<Message> MyClassList
@@ -33,6 +34,8 @@ namespace PrismUnityApp2.ViewModels
             } 
         }
 
+        public string latitude { get; set; }
+        public string longitude { get; set; }
 
 
 
@@ -58,9 +61,9 @@ namespace PrismUnityApp2.ViewModels
 
         public BemaViewModel(INavigationService navigationService)
         {
-            MobileService.Service1Client ws = new MobileService.Service1Client();
+            MobileService.VaksServiceClient ws = new MobileService.VaksServiceClient();
             ws.GetMessageDatasCompleted += Ws_GetMessageDatasCompleted;
-            ws.GetMessageDatasAsync();
+             
             myClassList = new ObservableCollection<Message>();
 
 
@@ -70,7 +73,8 @@ namespace PrismUnityApp2.ViewModels
 
         private void Navigate()
         {
-            _navigationService.NavigateAsync("Hovedside");
+            string navigateStringHovedside = string.Format("Hovedside?lat{0}&lon{1}", latitude, longitude);
+            _navigationService.NavigateAsync(navigateStringHovedside);
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)
@@ -81,6 +85,17 @@ namespace PrismUnityApp2.ViewModels
         public void OnNavigatedTo(NavigationParameters parameters)
         {
 
+            try
+            {
+                latitude = parameters["lat"].ToString();
+                longitude = parameters["lon"].ToString();
+                ws.GetMessageDatasAsync(latitude, longitude, DateTime.Today);
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
         }
 
     }

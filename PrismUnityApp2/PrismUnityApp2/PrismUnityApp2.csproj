@@ -36,11 +36,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service References\MobileService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="ViewModels\BemaViewModel.cs" />
     <Compile Include="ViewModels\BestillingViewModel.cs" />
     <Compile Include="ViewModels\HovedsideViewModel.cs" />
@@ -138,22 +133,6 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="Properties\ServiceReferences.Designer.ClientConfig" />
-    <None Include="Service References\MobileService\PrismUnityApp2.MobileService.CompositeType.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\MobileService\PrismUnityApp2.MobileService.Message.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\MobileService\Service1.wsdl" />
-    <None Include="Service References\MobileService\Service1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\MobileService\Service11.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\MobileService\Service12.xsd">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Bema.xaml">
@@ -163,21 +142,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Service References\MobileService\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\MobileService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\MobileService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\MobileService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Hovedside.xaml">
