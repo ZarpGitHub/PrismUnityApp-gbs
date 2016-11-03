@@ -3,98 +3,139 @@ using Prism.Mvvm;
 using Prism.Navigation;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 
 namespace PrismUnityApp2.ViewModels
 {
-    public class HovedsideViewModel : BindableBase, INotifyPropertyChanged , INavigationAware
+
+
+    public class HovedsideViewModel : BindableBase, INotifyPropertyChanged //, INavigationAware
     {
-        INavigationService _navigationService;
-        public event PropertyChangedEventHandler PropertyChanged;
         MobileService.VaksServiceClient ws = new MobileService.VaksServiceClient();
+        //INavigationService _navigationService;
+       // public event PropertyChangedEventHandler PropertyChanged;
 
-        private DateTime selectedDate;
-        public DateTime SelectedDate
+
+        //private DateTime selectedDate;
+        //public DateTime SelectedDate
+        //{
+        //    get { return selectedDate; }
+        //    set
+        //    {
+        //        if (selectedDate != value)
+        //        {
+        //            selectedDate = value;
+
+        //            if (PropertyChanged != null)
+        //            {
+        //                PropertyChanged(this,
+        //                    new PropertyChangedEventArgs("SelectedDate"));
+        //            }
+        //        }
+        //    }
+        //}
+
+        //private DateTime minimumSelectedDate;
+        //public DateTime MinimumSelectedDate
+        //{
+        //    get { return minimumSelectedDate; }
+        //    set
+        //    {
+        //        if (minimumSelectedDate != value)
+        //        {
+        //            minimumSelectedDate = value;
+
+        //            if (PropertyChanged != null)
+        //            {
+        //                PropertyChanged(this,
+        //                    new PropertyChangedEventArgs("MinimumSelectedDate"));
+        //            }
+        //        }
+        //    }
+        //}
+
+        //public DelegateCommand Navigatetest { get; private set; }
+        //public DelegateCommand NavigateToBestilling { get; private set; }
+
+        //public string latitude { get; set; }
+        //public string longitude { get; set; }
+
+        public HovedsideViewModel()
         {
-            get { return selectedDate; }
-            set
-            {
-                if (selectedDate != value)
-                {
-                    selectedDate = value;
-
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this,
-                            new PropertyChangedEventArgs("SelectedDate"));
-                    }
-                }
-            }
+            toemmeListe = new ObservableCollection<ToemningData>();
+            SetRowData();
         }
 
-        private DateTime minimumSelectedDate;
-        public DateTime MinimumSelectedDate
-        {
-            get { return minimumSelectedDate; }
-            set
-            {
-                if (minimumSelectedDate != value)
-                {
-                    minimumSelectedDate = value;
 
-                    if (PropertyChanged != null)
-                    {
-                        PropertyChanged(this,
-                            new PropertyChangedEventArgs("MinimumSelectedDate"));
-                    }
-                }
-            }
-        }
+        //public HovedsideViewModel(INavigationService navigationService)
+        //{
+        //    toemmeListe = new ObservableCollection<ToemningData>();
+        //    SetRowData();
 
-        public DelegateCommand Navigatetest { get; private set; }
-        public DelegateCommand NavigateToBestilling { get; private set; }
+        //    MinimumSelectedDate = DateTime.Now;
+        //    SelectedDate = DateTime.Now.AddDays(1);
 
-        public string latitude { get; set; }
-        public string longitude { get; set; }
+        //    _navigationService = navigationService;
+        //    Navigatetest = new DelegateCommand(Navigate);
+        //    NavigateToBestilling = new DelegateCommand(_NavigateToBestilling); 
+        //}
 
-        public HovedsideViewModel(INavigationService navigationService)
+       
+
+        //private void _NavigateToBestilling()
+        //{
+        //    _navigationService.NavigateAsync("Bestilling");
+        //}
+
+        //private void Navigate()
+        //{
+        //   _navigationService.NavigateAsync("Scanner");
+        //}
+
+        //public void OnNavigatedFrom(NavigationParameters parameters)
+        //{
+            
+        //}
+
+        //public void OnNavigatedTo(NavigationParameters parameters)
+        //{
+        //    //latitude = parameters["lat"].ToString();
+        //    //longitude = parameters["lon"].ToString();
+        //}
+
+        public void SetRowData()
         {
             ws.GetToemmeDatasCompleted += Ws_GetToemmeDatasCompleted;
-
-            MinimumSelectedDate = DateTime.Now;
-            SelectedDate = DateTime.Now.AddDays(1);
-
-            _navigationService = navigationService;
-            Navigatetest = new DelegateCommand(Navigate);
-            NavigateToBestilling = new DelegateCommand(_NavigateToBestilling);
+            ws.GetToemmeDatasAsync("55,7070679", "12,4234935",DateTime.Today.AddDays(-2));
         }
+
 
         private void Ws_GetToemmeDatasCompleted(object sender, MobileService.GetToemmeDatasCompletedEventArgs e)
         {
-            throw new NotImplementedException();
+            //ToemmeListe.Clear();
+            foreach (var toemming in e.Result)
+            {
+                ToemningData _ToemningData = new ToemningData();
+                _ToemningData.Fraktion = toemming.Fraktion;
+                _ToemningData.ToemmeID = toemming.ToemmeId;
+                _ToemningData.Type = toemming.type;
+                _ToemningData.Vaegt = toemming.weight;
+                ToemmeListe.Add(_ToemningData);
+            }
         }
 
-        private void _NavigateToBestilling()
+        private ObservableCollection<ToemningData> toemmeListe;
+
+        public ObservableCollection<ToemningData> ToemmeListe
         {
-            _navigationService.NavigateAsync("Bestilling");
+            get { return toemmeListe; }
+            set { this.toemmeListe = value; }
         }
 
-        private void Navigate()
-        {
-           _navigationService.NavigateAsync("Scanner");
-        }
+ 
 
-        public void OnNavigatedFrom(NavigationParameters parameters)
-        {
-            
-        }
 
-        public void OnNavigatedTo(NavigationParameters parameters)
-        {
-            latitude = parameters["lat"].ToString();
-            longitude = parameters["lon"].ToString();
-            ws.GetToemmeDatasAsync(latitude, longitude, DateTime.Today);
-        }
     }
 }

@@ -3,16 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:sfgrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
              x:Class="PrismUnityApp2.Views.Hovedside"
-             xmlns:sys="clr-namespace:System;assembly=mscorlib">
-
+             Title="Datagrid">
+<!--xmlns:sys="clr-namespace:System;assembly=mscorlib"-->
   <ContentPage.Content>
 
     <Grid>
       <Grid.RowDefinitions>
         <RowDefinition Height="20" />
         <RowDefinition Height="50"/>
-        <RowDefinition Height="*" />
+        <RowDefinition  Height="*" />
         <RowDefinition Height="50" />
         <RowDefinition Height="50" />
       </Grid.RowDefinitions>
@@ -23,13 +24,37 @@
         <ColumnDefinition Width="*"/>
       </Grid.ColumnDefinitions>
 
-      <DatePicker Date="{Binding SelectedDate,Mode=TwoWay}" MinimumDate="{Binding MinimumSelectedDate,Mode=TwoWay}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="Center">
+      <!--<DatePicker Date="{Binding SelectedDate,Mode=TwoWay}" MinimumDate="{Binding MinimumSelectedDate,Mode=TwoWay}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="Center">
         <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
-      </DatePicker>
+      </DatePicker>-->
 
-      <Button Text="Scan" FontSize="24" Grid.Row="3" Grid.Column="0" Command="{Binding Navigatetest}"/>
+
+
+      <sfgrid:SfDataGrid x:Name="dataGrid"
+                  AutoGenerateColumns="False"
+                  ColumnSizer="Star"
+                  SelectedIndex="1"
+                  SelectionMode="Single"
+                 ItemsSource="{Binding ToemmeListe}"
+                   AllowSorting="True"
+                          Grid.Row="2" 
+                          Grid.Column="0" Grid.ColumnSpan="3"
+                         >
+
+        <sfgrid:SfDataGrid.Columns x:TypeArguments="syncfusion:Columns">
+          <sfgrid:GridTextColumn HeaderText="Fraktion"
+                                     MappingName="Fraktion" />     <!--Fraktion-->                                               
+          <sfgrid:GridTextColumn HeaderText="Type"
+                                     MappingName="Type" />          <!--Type--> 
+          <sfgrid:GridTextColumn HeaderText="Vaegt"
+                                   MappingName="Vaegt" />     <!--vægt-->
+        </sfgrid:SfDataGrid.Columns>
+
+      </sfgrid:SfDataGrid>
+
+      <Button Text="Scan" FontSize="24" Grid.Row="3" Grid.Column="0"/> <!--Command="{Binding Navigatetest}"/>-->
       <Button Text="Mail" FontSize="24" Grid.Row="3" Grid.Column="2"/>
-      <Button Text="Manuel" FontSize="24" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="Center" Command="{Binding NavigateToBestilling}"/>
+      <Button Text="Manuel" FontSize="24" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="Center"/> <!--Command="{Binding NavigateToBestilling}"/>-->
       
     </Grid>
     

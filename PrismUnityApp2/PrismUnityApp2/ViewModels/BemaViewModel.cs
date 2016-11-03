@@ -61,7 +61,7 @@ namespace PrismUnityApp2.ViewModels
 
         public BemaViewModel(INavigationService navigationService)
         {
-            MobileService.VaksServiceClient ws = new MobileService.VaksServiceClient();
+           // MobileService.VaksServiceClient ws = new MobileService.VaksServiceClient();
             ws.GetMessageDatasCompleted += Ws_GetMessageDatasCompleted;
              
             myClassList = new ObservableCollection<Message>();
@@ -73,7 +73,7 @@ namespace PrismUnityApp2.ViewModels
 
         private void Navigate()
         {
-            string navigateStringHovedside = string.Format("Hovedside?lat{0}&lon{1}", latitude, longitude);
+            string navigateStringHovedside = string.Format("Hovedside?lat={0}&lon={1}", latitude, longitude);
             _navigationService.NavigateAsync(navigateStringHovedside);
         }
 

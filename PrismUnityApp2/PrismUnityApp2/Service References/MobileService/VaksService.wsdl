@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="VaksService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/VaksMobileService" />
+      <xs:element name="GetData">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="value" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetDataResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="GetDataResult" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetMessageDatas">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="Latitude" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="Longitude" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetMessageDatasResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/VaksMobileService" minOccurs="0" name="GetMessageDatasResult" nillable="true" type="q1:ArrayOfMessage" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetToemmeDatas">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="Latitude" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="Longitude" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="date" type="xs:dateTime" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetToemmeDatasResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/VaksMobileService" minOccurs="0" name="GetToemmeDatasResult" nillable="true" type="q2:ArrayOfToemning" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetToemmeDatasByPladsId">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="GbsId" type="xs:int" />
+            <xs:element minOccurs="0" name="date" type="xs:dateTime" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetToemmeDatasByPladsIdResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/VaksMobileService" minOccurs="0" name="GetToemmeDatasByPladsIdResult" nillable="true" type="q3:ArrayOfToemning" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="LoginAndReturnPladsId">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="Latitude" type="xs:double" />
+            <xs:element minOccurs="0" name="Longitude" type="xs:double" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="LoginAndReturnPladsIdResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/VaksMobileService" minOccurs="0" name="LoginAndReturnPladsIdResult" nillable="true" type="q4:AccessData" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="anyType" nillable="true" type="xs:anyType" />
+      <xs:element name="anyURI" nillable="true" type="xs:anyURI" />
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
+      <xs:element name="boolean" nillable="true" type="xs:boolean" />
+      <xs:element name="byte" nillable="true" type="xs:byte" />
+      <xs:element name="dateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="decimal" nillable="true" type="xs:decimal" />
+      <xs:element name="double" nillable="true" type="xs:double" />
+      <xs:element name="float" nillable="true" type="xs:float" />
+      <xs:element name="int" nillable="true" type="xs:int" />
+      <xs:element name="long" nillable="true" type="xs:long" />
+      <xs:element name="QName" nillable="true" type="xs:QName" />
+      <xs:element name="short" nillable="true" type="xs:short" />
+      <xs:element name="string" nillable="true" type="xs:string" />
+      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" />
+      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" />
+      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" />
+      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" />
+      <xs:element name="char" nillable="true" type="tns:char" />
+      <xs:simpleType name="char">
+        <xs:restriction base="xs:int" />
+      </xs:simpleType>
+      <xs:element name="duration" nillable="true" type="tns:duration" />
+      <xs:simpleType name="duration">
+        <xs:restriction base="xs:duration">
+          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
+          <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
+          <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="guid" nillable="true" type="tns:guid" />
+      <xs:simpleType name="guid">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:attribute name="FactoryType" type="xs:QName" />
+      <xs:attribute name="Id" type="xs:ID" />
+      <xs:attribute name="Ref" type="xs:IDREF" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/VaksMobileService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/VaksMobileService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="ArrayOfMessage">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Message" nillable="true" type="tns:Message" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfMessage" nillable="true" type="tns:ArrayOfMessage" />
+      <xs:complexType name="Message">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="MessageTime" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="messagedata" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Message" nillable="true" type="tns:Message" />
+      <xs:complexType name="ArrayOfToemning">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Toemning" nillable="true" type="tns:Toemning" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfToemning" nillable="true" type="tns:ArrayOfToemning" />
+      <xs:complexType name="Toemning">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Fraktion" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ToemmeId" type="xs:int" />
+          <xs:element minOccurs="0" name="type" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="weight" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Toemning" nillable="true" type="tns:Toemning" />
+      <xs:complexType name="AccessData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Fraktion" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ToemmeId" type="xs:int" />
+          <xs:element minOccurs="0" name="type" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="weight" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="AccessData" nillable="true" type="tns:AccessData" />
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="IVaksService_GetData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetData" />
+  </wsdl:message>
+  <wsdl:message name="IVaksService_GetData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVaksService_GetMessageDatas_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMessageDatas" />
+  </wsdl:message>
+  <wsdl:message name="IVaksService_GetMessageDatas_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMessageDatasResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVaksService_GetToemmeDatas_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetToemmeDatas" />
+  </wsdl:message>
+  <wsdl:message name="IVaksService_GetToemmeDatas_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetToemmeDatasResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVaksService_GetToemmeDatasByPladsId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetToemmeDatasByPladsId" />
+  </wsdl:message>
+  <wsdl:message name="IVaksService_GetToemmeDatasByPladsId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetToemmeDatasByPladsIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVaksService_LoginAndReturnPladsId_InputMessage">
+    <wsdl:part name="parameters" element="tns:LoginAndReturnPladsId" />
+  </wsdl:message>
+  <wsdl:message name="IVaksService_LoginAndReturnPladsId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginAndReturnPladsIdResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IVaksService">
+    <wsdl:operation name="GetData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVaksService/GetData" message="tns:IVaksService_GetData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVaksService/GetDataResponse" message="tns:IVaksService_GetData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageDatas">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVaksService/GetMessageDatas" message="tns:IVaksService_GetMessageDatas_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVaksService/GetMessageDatasResponse" message="tns:IVaksService_GetMessageDatas_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetToemmeDatas">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVaksService/GetToemmeDatas" message="tns:IVaksService_GetToemmeDatas_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVaksService/GetToemmeDatasResponse" message="tns:IVaksService_GetToemmeDatas_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetToemmeDatasByPladsId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVaksService/GetToemmeDatasByPladsId" message="tns:IVaksService_GetToemmeDatasByPladsId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVaksService/GetToemmeDatasByPladsIdResponse" message="tns:IVaksService_GetToemmeDatasByPladsId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LoginAndReturnPladsId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVaksService/LoginAndReturnPladsId" message="tns:IVaksService_LoginAndReturnPladsId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVaksService/LoginAndReturnPladsIdResponse" message="tns:IVaksService_LoginAndReturnPladsId_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IVaksService" type="tns:IVaksService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetData">
+      <soap:operation soapAction="http://tempuri.org/IVaksService/GetData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageDatas">
+      <soap:operation soapAction="http://tempuri.org/IVaksService/GetMessageDatas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetToemmeDatas">
+      <soap:operation soapAction="http://tempuri.org/IVaksService/GetToemmeDatas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetToemmeDatasByPladsId">
+      <soap:operation soapAction="http://tempuri.org/IVaksService/GetToemmeDatasByPladsId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginAndReturnPladsId">
+      <soap:operation soapAction="http://tempuri.org/IVaksService/LoginAndReturnPladsId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="VaksService">
+    <wsdl:port name="BasicHttpBinding_IVaksService" binding="tns:BasicHttpBinding_IVaksService">
+      <soap:address location="http://vf-kssweb2/Vaks2Svc/VaksService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
