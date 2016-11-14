@@ -18,6 +18,7 @@ namespace PrismUnityApp2.ViewModels
             set { SetProperty(ref _title, value); }
         }
 
+        //public DelegateCommand DateChanged { get; private set; }
         public event PropertyChangedEventHandler PropertyChanged;
 
         private DateTime selectedDate;
@@ -33,7 +34,9 @@ namespace PrismUnityApp2.ViewModels
                     if (PropertyChanged != null)
                     {
                         PropertyChanged(this,
-                            new PropertyChangedEventArgs("SelectedDate"));
+                            new PropertyChangedEventArgs("SelectedDate")); // this only gets hit when the user clicks ok but not sure if its the same on iphne
+                        
+                        // get the data for type flyting and Fraktion here
                     }
                 }
             }
@@ -59,11 +62,19 @@ namespace PrismUnityApp2.ViewModels
         }
 
 
+
         public BestillingViewModel()
         {
             MinimumSelectedDate = DateTime.Now;
-            SelectedDate = DateTime.Now.AddDays(1);
+            SelectedDate = DateTime.Today.AddDays(1);
+            
+            //DateChanged = new DelegateCommand(DateSelected);
         }
+
+        //private void DateSelected()
+        //{
+
+        //}
 
         public void OnNavigatedFrom(NavigationParameters parameters)
         {

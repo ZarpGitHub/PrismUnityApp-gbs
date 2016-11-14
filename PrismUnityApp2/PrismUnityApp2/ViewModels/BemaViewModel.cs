@@ -61,7 +61,6 @@ namespace PrismUnityApp2.ViewModels
 
         public BemaViewModel(INavigationService navigationService)
         {
-           // MobileService.VaksServiceClient ws = new MobileService.VaksServiceClient();
             ws.GetMessageDatasCompleted += Ws_GetMessageDatasCompleted;
              
             myClassList = new ObservableCollection<Message>();

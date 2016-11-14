@@ -35,16 +35,14 @@
       <xs:element name="GetToemmeDatas">
         <xs:complexType>
           <xs:sequence>
-            <xs:element minOccurs="0" name="Latitude" nillable="true" type="xs:string" />
-            <xs:element minOccurs="0" name="Longitude" nillable="true" type="xs:string" />
-            <xs:element minOccurs="0" name="date" type="xs:dateTime" />
+            <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/VaksMobileService" minOccurs="0" name="toemning" nillable="true" type="q2:Toemning" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
       <xs:element name="GetToemmeDatasResponse">
         <xs:complexType>
           <xs:sequence>
-            <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/VaksMobileService" minOccurs="0" name="GetToemmeDatasResult" nillable="true" type="q2:ArrayOfToemning" />
+            <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/VaksMobileService" minOccurs="0" name="GetToemmeDatasResult" nillable="true" type="q3:ArrayOfToemning" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -59,7 +57,7 @@
       <xs:element name="GetToemmeDatasByPladsIdResponse">
         <xs:complexType>
           <xs:sequence>
-            <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/VaksMobileService" minOccurs="0" name="GetToemmeDatasByPladsIdResult" nillable="true" type="q3:ArrayOfToemning" />
+            <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/VaksMobileService" minOccurs="0" name="GetToemmeDatasByPladsIdResult" nillable="true" type="q4:ArrayOfToemning" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -76,7 +74,7 @@
       <xs:element name="LoginAndReturnPladsIdResponse">
         <xs:complexType>
           <xs:sequence>
-            <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/VaksMobileService" minOccurs="0" name="LoginAndReturnPladsIdResult" nillable="true" type="q4:AccessData" />
+            <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/VaksMobileService" minOccurs="0" name="LoginAndReturnPladsIdResult" nillable="true" type="q5:AccessData" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -136,21 +134,24 @@
         </xs:sequence>
       </xs:complexType>
       <xs:element name="Message" nillable="true" type="tns:Message" />
+      <xs:complexType name="Toemning">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Fraktion" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Latitude" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Longitude" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ToemmeId" type="xs:int" />
+          <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Weight" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="date" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Toemning" nillable="true" type="tns:Toemning" />
       <xs:complexType name="ArrayOfToemning">
         <xs:sequence>
           <xs:element minOccurs="0" maxOccurs="unbounded" name="Toemning" nillable="true" type="tns:Toemning" />
         </xs:sequence>
       </xs:complexType>
       <xs:element name="ArrayOfToemning" nillable="true" type="tns:ArrayOfToemning" />
-      <xs:complexType name="Toemning">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="Fraktion" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="ToemmeId" type="xs:int" />
-          <xs:element minOccurs="0" name="type" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="weight" nillable="true" type="xs:string" />
-        </xs:sequence>
-      </xs:complexType>
-      <xs:element name="Toemning" nillable="true" type="tns:Toemning" />
       <xs:complexType name="AccessData">
         <xs:sequence>
           <xs:element minOccurs="0" name="Fraktion" nillable="true" type="xs:string" />

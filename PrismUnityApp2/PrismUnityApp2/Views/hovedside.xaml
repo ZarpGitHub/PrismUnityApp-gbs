@@ -5,8 +5,9 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              xmlns:sfgrid="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
              x:Class="PrismUnityApp2.Views.Hovedside"
-             Title="Datagrid">
-<!--xmlns:sys="clr-namespace:System;assembly=mscorlib"-->
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             Title="test">
+
   <ContentPage.Content>
 
     <Grid>
@@ -24,9 +25,9 @@
         <ColumnDefinition Width="*"/>
       </Grid.ColumnDefinitions>
 
-      <!--<DatePicker Date="{Binding SelectedDate,Mode=TwoWay}" MinimumDate="{Binding MinimumSelectedDate,Mode=TwoWay}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="Center">
-        <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
-      </DatePicker>-->
+      <DatePicker Date="{Binding SelectedDate,Mode=TwoWay}" MinimumDate="{Binding MinimumSelectedDate,Mode=TwoWay}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="Center">
+        <DatePicker.Format>dd-MM-yyyy</DatePicker.Format>
+      </DatePicker>
 
 
 
@@ -52,9 +53,9 @@
 
       </sfgrid:SfDataGrid>
 
-      <Button Text="Scan" FontSize="24" Grid.Row="3" Grid.Column="0"/> <!--Command="{Binding Navigatetest}"/>-->
+      <Button Text="Scan" FontSize="24" Grid.Row="3" Grid.Column="0" Command="{Binding Navigatetest}"/>
       <Button Text="Mail" FontSize="24" Grid.Row="3" Grid.Column="2"/>
-      <Button Text="Manuel" FontSize="24" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="Center"/> <!--Command="{Binding NavigateToBestilling}"/>-->
+      <Button Text="Manuel" FontSize="24" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="Center" Command="{Binding NavigateToBestilling}"/>
       
     </Grid>
     

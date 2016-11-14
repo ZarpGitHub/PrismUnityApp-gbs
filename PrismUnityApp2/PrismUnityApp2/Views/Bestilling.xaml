@@ -7,7 +7,7 @@
 
   <ContentPage.Content>
 
-    <Grid BackgroundColor="Green">
+    <Grid>
     <Grid.RowDefinitions>
       <RowDefinition Height="20"></RowDefinition>
       <!--padding 0-->
@@ -43,14 +43,14 @@
       <ColumnDefinition Width="*"></ColumnDefinition>
     </Grid.ColumnDefinitions>
 
-    <Label Text="container NR" FontSize="20" HorizontalOptions="Center" Grid.Row="1" Grid.Column="1" BackgroundColor="Blue"/>
+    <Label Text="container NR" FontSize="20" HorizontalOptions="Center" Grid.Row="1" Grid.Column="1" />
     <!-- need to be Bindede op to TommeID  Text="{Binding TommeID}" -->
 
-    <DatePicker Grid.Row="2" Grid.Column="1" HorizontalOptions="Center" BackgroundColor="Yellow">
-      <DatePicker.Format>yyyy-MM-dd</DatePicker.Format>
+    <DatePicker Date="{Binding SelectedDate,Mode=TwoWay}" MinimumDate="{Binding MinimumSelectedDate,Mode=TwoWay}" Grid.Row="2" Grid.Column="1"  HorizontalOptions="Center">  <!--Command="{Binding DateChanged}"-->
+      <DatePicker.Format>dd-MM-yyyy</DatePicker.Format>
     </DatePicker>
 
-    <Picker Title="Type Flyting" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" BackgroundColor="Red" Margin="10,0,10,0" >
+    <Picker Title="Type Flyting" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand"  Margin="10,0,10,0" >
       <!--Transport skal sættes som starter-->
       <Picker.Items>
         <x:String>Transport</x:String>
@@ -59,7 +59,7 @@
       </Picker.Items>
     </Picker>
 
-    <Picker Title="Fraktion" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" BackgroundColor="Blue" Margin="10,0,10,0">
+    <Picker Title="Fraktion" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" Margin="10,0,10,0">
       <Picker.Items>
         <x:String>Fraktion1</x:String>
         <x:String>Fraktion2</x:String>
@@ -70,13 +70,13 @@
       </Picker.Items>
     </Picker>
 
-    <Editor Text="I am an Editor"  Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand" BackgroundColor="Yellow" Margin="10,0,10,0"/>
+    <Editor Text="I am an Editor"  Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="FillAndExpand"  Margin="10,0,10,0"/>
 
-    <Button Text="Scan" FontSize="20" Grid.Row="6" Grid.Column="1" HorizontalOptions="Center" BackgroundColor="Red"/>
+    <Button Text="Scan" FontSize="20" Grid.Row="6" Grid.Column="1" HorizontalOptions="Center"/>
 
-    <Button Text="Bestil" FontSize="20" Grid.Row="7" Grid.Column="0" BackgroundColor="Red" HorizontalOptions="FillAndExpand" Margin="10,0,0,0"/>
+    <Button Text="Bestil" FontSize="20" Grid.Row="7" Grid.Column="0" HorizontalOptions="FillAndExpand" Margin="10,0,0,0"/>
 
-    <Button Text="Fortryd" FontSize="20" Grid.Row="7" Grid.Column="2" BackgroundColor="Red" HorizontalOptions="FillAndExpand" Margin="0,0,10,0"/>
+    <Button Text="Fortryd" FontSize="19" Grid.Row="7" Grid.Column="2" HorizontalOptions="FillAndExpand" Margin="0,0,10,0"/>
 
   </Grid>
 

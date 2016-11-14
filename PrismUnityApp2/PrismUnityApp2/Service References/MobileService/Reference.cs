@@ -64,11 +64,17 @@ namespace PrismUnityApp2.MobileService {
         
         private string FraktionField;
         
+        private string LatitudeField;
+        
+        private string LongitudeField;
+        
         private int ToemmeIdField;
         
-        private string typeField;
+        private string TypeField;
         
-        private string weightField;
+        private string WeightField;
+        
+        private System.DateTime dateField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public string Fraktion {
@@ -79,6 +85,32 @@ namespace PrismUnityApp2.MobileService {
                 if ((object.ReferenceEquals(this.FraktionField, value) != true)) {
                     this.FraktionField = value;
                     this.RaisePropertyChanged("Fraktion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Latitude {
+            get {
+                return this.LatitudeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LatitudeField, value) != true)) {
+                    this.LatitudeField = value;
+                    this.RaisePropertyChanged("Latitude");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Longitude {
+            get {
+                return this.LongitudeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LongitudeField, value) != true)) {
+                    this.LongitudeField = value;
+                    this.RaisePropertyChanged("Longitude");
                 }
             }
         }
@@ -97,27 +129,40 @@ namespace PrismUnityApp2.MobileService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string type {
+        public string Type {
             get {
-                return this.typeField;
+                return this.TypeField;
             }
             set {
-                if ((object.ReferenceEquals(this.typeField, value) != true)) {
-                    this.typeField = value;
-                    this.RaisePropertyChanged("type");
+                if ((object.ReferenceEquals(this.TypeField, value) != true)) {
+                    this.TypeField = value;
+                    this.RaisePropertyChanged("Type");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string weight {
+        public string Weight {
             get {
-                return this.weightField;
+                return this.WeightField;
             }
             set {
-                if ((object.ReferenceEquals(this.weightField, value) != true)) {
-                    this.weightField = value;
-                    this.RaisePropertyChanged("weight");
+                if ((object.ReferenceEquals(this.WeightField, value) != true)) {
+                    this.WeightField = value;
+                    this.RaisePropertyChanged("Weight");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime date {
+            get {
+                return this.dateField;
+            }
+            set {
+                if ((this.dateField.Equals(value) != true)) {
+                    this.dateField = value;
+                    this.RaisePropertyChanged("date");
                 }
             }
         }
@@ -222,7 +267,7 @@ namespace PrismUnityApp2.MobileService {
         System.Collections.ObjectModel.ObservableCollection<PrismUnityApp2.MobileService.Message> EndGetMessageDatas(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IVaksService/GetToemmeDatas", ReplyAction="http://tempuri.org/IVaksService/GetToemmeDatasResponse")]
-        System.IAsyncResult BeginGetToemmeDatas(string Latitude, string Longitude, System.DateTime date, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginGetToemmeDatas(PrismUnityApp2.MobileService.Toemning toemning, System.AsyncCallback callback, object asyncState);
         
         System.Collections.ObjectModel.ObservableCollection<PrismUnityApp2.MobileService.Toemning> EndGetToemmeDatas(System.IAsyncResult result);
         
@@ -533,8 +578,8 @@ namespace PrismUnityApp2.MobileService {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.IAsyncResult PrismUnityApp2.MobileService.IVaksService.BeginGetToemmeDatas(string Latitude, string Longitude, System.DateTime date, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginGetToemmeDatas(Latitude, Longitude, date, callback, asyncState);
+        System.IAsyncResult PrismUnityApp2.MobileService.IVaksService.BeginGetToemmeDatas(PrismUnityApp2.MobileService.Toemning toemning, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetToemmeDatas(toemning, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -543,10 +588,8 @@ namespace PrismUnityApp2.MobileService {
         }
         
         private System.IAsyncResult OnBeginGetToemmeDatas(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            string Latitude = ((string)(inValues[0]));
-            string Longitude = ((string)(inValues[1]));
-            System.DateTime date = ((System.DateTime)(inValues[2]));
-            return ((PrismUnityApp2.MobileService.IVaksService)(this)).BeginGetToemmeDatas(Latitude, Longitude, date, callback, asyncState);
+            PrismUnityApp2.MobileService.Toemning toemning = ((PrismUnityApp2.MobileService.Toemning)(inValues[0]));
+            return ((PrismUnityApp2.MobileService.IVaksService)(this)).BeginGetToemmeDatas(toemning, callback, asyncState);
         }
         
         private object[] OnEndGetToemmeDatas(System.IAsyncResult result) {
@@ -562,11 +605,11 @@ namespace PrismUnityApp2.MobileService {
             }
         }
         
-        public void GetToemmeDatasAsync(string Latitude, string Longitude, System.DateTime date) {
-            this.GetToemmeDatasAsync(Latitude, Longitude, date, null);
+        public void GetToemmeDatasAsync(PrismUnityApp2.MobileService.Toemning toemning) {
+            this.GetToemmeDatasAsync(toemning, null);
         }
         
-        public void GetToemmeDatasAsync(string Latitude, string Longitude, System.DateTime date, object userState) {
+        public void GetToemmeDatasAsync(PrismUnityApp2.MobileService.Toemning toemning, object userState) {
             if ((this.onBeginGetToemmeDatasDelegate == null)) {
                 this.onBeginGetToemmeDatasDelegate = new BeginOperationDelegate(this.OnBeginGetToemmeDatas);
             }
@@ -577,9 +620,7 @@ namespace PrismUnityApp2.MobileService {
                 this.onGetToemmeDatasCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetToemmeDatasCompleted);
             }
             base.InvokeAsync(this.onBeginGetToemmeDatasDelegate, new object[] {
-                        Latitude,
-                        Longitude,
-                        date}, this.onEndGetToemmeDatasDelegate, this.onGetToemmeDatasCompletedDelegate, userState);
+                        toemning}, this.onEndGetToemmeDatasDelegate, this.onGetToemmeDatasCompletedDelegate, userState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -810,11 +851,9 @@ namespace PrismUnityApp2.MobileService {
                 return _result;
             }
             
-            public System.IAsyncResult BeginGetToemmeDatas(string Latitude, string Longitude, System.DateTime date, System.AsyncCallback callback, object asyncState) {
-                object[] _args = new object[3];
-                _args[0] = Latitude;
-                _args[1] = Longitude;
-                _args[2] = date;
+            public System.IAsyncResult BeginGetToemmeDatas(PrismUnityApp2.MobileService.Toemning toemning, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = toemning;
                 System.IAsyncResult _result = base.BeginInvoke("GetToemmeDatas", _args, callback, asyncState);
                 return _result;
             }

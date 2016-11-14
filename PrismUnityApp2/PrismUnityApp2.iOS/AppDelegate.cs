@@ -6,6 +6,7 @@ using Foundation;
 using UIKit;
 using Prism.Unity;
 using Microsoft.Practices.Unity;
+using Syncfusion.SfDataGrid.XForms.iOS;
 
 namespace PrismUnityApp2.iOS
 {
@@ -27,7 +28,7 @@ namespace PrismUnityApp2.iOS
             ZXing.Net.Mobile.Forms.iOS.Platform.Init();
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App(new iOSInitializer()));
-
+            SfDataGridRenderer.Init();
             return base.FinishedLaunching(app, options);
         }
     }

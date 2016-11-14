@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="98037d46-7fe2-4645-9c87-5935867757d8" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="4d2eeb4d-af69-423e-97d4-02e4b6bb4bb1" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
     <EnableDataBinding>true</EnableDataBinding>
@@ -23,7 +23,7 @@
     <MetadataSource Address="http://vf-kssweb2/Vaks2Svc/VaksService.svc?singleWsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="VaksService.wsdl" MetadataType="Wsdl" ID="c7266df6-b691-4683-9d5f-cee5fe5ddf0d" SourceId="1" SourceUrl="http://vf-kssweb2/Vaks2Svc/VaksService.svc?singleWsdl" />
+    <MetadataFile FileName="VaksService.wsdl" MetadataType="Wsdl" ID="8bae6d1a-18ec-43ed-af89-c2c2b0c5f61f" SourceId="1" SourceUrl="http://vf-kssweb2/Vaks2Svc/VaksService.svc?singleWsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
